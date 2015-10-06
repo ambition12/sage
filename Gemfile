@@ -27,6 +27,19 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# less(CSS)対応（後述LESSを使う場合）
+gem 'less-rails'
+# JavaScript のエンジンである v8 を Ruby から使えるようにする
+gem 'therubyracer'
+# JavaScriptコードを実行するためのエンジン
+gem 'execjs'
+
+# Twitter社が提供しているCSSとJavaScriptのフレームワーク
+gem 'twitter-bootstrap-rails'
+
+# シンプルフォーム
+gem 'simple_form'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
