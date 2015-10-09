@@ -40,6 +40,8 @@ gem 'twitter-bootstrap-rails'
 # シンプルフォーム
 gem 'simple_form'
 
+gem 'google-search'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
