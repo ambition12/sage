@@ -17,9 +17,16 @@
       <div class="col-md-9">
         <div class="row">
           <div class="item col-md-4 col-sm-4 col-xs-6">
-            <a href="http://templated.co/" target="_blank" title="">
-              <img src="http://capture.heartrails.com/400x400?http://templated.co/" alt="" class="img-responsive">
-            </a>
+           <!-- <a href="http://templated.co/" target="_blank" title="">
+             	 <img src="http://capture.heartrails.com/400x400?http://templated.co/" alt="" class="img-responsive">
+      		</a>
+      	    -->
+            <%= link_to "http://templated.co/", :target => "_blank" do %>
+              <!-- <a href="http://templated.co/" target="_blank" title=""> -->
+              <%= image_tag("http://capture.heartrails.com/400x400?http://templated.co/", :class => "img-responsive", :alt => "Facebook") %>   
+	      <!-- <img src="http://capture.heartrails.com/400x400?http://templated.co/" alt="" class="img-responsive">-->
+	      <!-- </a>-->
+           <% end %> 
             <p>こんな風に</p>
           </div>
           <div class="item col-md-4 col-sm-4 col-xs-6">
