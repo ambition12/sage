@@ -11,3 +11,4 @@ class GraphController < ApplicationController
     current_quantity = [1000,5000,3000,8000]
   end
 end
+end
