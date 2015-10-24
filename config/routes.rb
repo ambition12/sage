@@ -1,12 +1,8 @@
 Sage::Application.routes.draw do
-<<<<<<< HEAD
+
   resources :trends
-
   resources :articles
-
-=======
   get "graph_rader/status_view_rader"
->>>>>>> 9188534674ceb16aefba3953ea1815b80d696838
   get "graph/status_view"
   get "sage/top"
   get "sage/entame"
