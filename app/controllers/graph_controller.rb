@@ -3,9 +3,9 @@ class GraphController < ApplicationController
       current_quantity = [1000,5000,3000,8000]
 
       @graph = LazyHighCharts::HighChart.new('graph') do |f|
-        f.title(text: 'ItemXXXの在庫の推移')
+        f.title(text: '月日を入れてくれ')
         f.xAxis(categories: category)
-        f.series(name: '在庫数', data: current_quantity)
+        f.series(name: '日にち', data: current_quantity)
 
     category = [1,3,5,7]
     current_quantity = [1000,5000,3000,8000]
