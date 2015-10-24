@@ -1,4 +1,5 @@
 Sage::Application.routes.draw do
+  get "graph_rader/status_view_rader"
   get "graph/status_view"
   get "sage/top"
   # The priority is based upon order of creation: first created -> highest priority.
