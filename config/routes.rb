@@ -1,5 +1,6 @@
 Sage::Application.routes.draw do
 
+  get "mecab/nouncount"
   resources :trends
   resources :articles
   get "graph_rader/status_view_rader"
