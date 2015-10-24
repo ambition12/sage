@@ -38,6 +38,7 @@ GEM
     commonjs (0.2.7)
     erubis (2.7.0)
     execjs (2.6.0)
+    ffi (1.9.10)
     google-search (1.0.3)
       json
     hash-deep-merge (0.1.1)
@@ -68,6 +69,8 @@ GEM
     mini_portile (0.6.2)
     minitest (4.7.5)
     multi_json (1.11.2)
+    natto (1.0.1)
+      ffi (>= 1.9.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     polyglot (0.3.5)
@@ -147,6 +150,7 @@ DEPENDENCIES
   jquery-rails
   lazy_high_charts
   less-rails
+  natto
   nokogiri
   rails (= 4.0.5)
   sass-rails (~> 4.0.2)
