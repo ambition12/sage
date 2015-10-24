@@ -11,6 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20151024065115) do
+
+  create_table "articles", force: true do |t|
+    t.text     "url"
+    t.string   "genre"
+    t.integer  "count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "trends", force: true do |t|
+    t.string   "noun"
+    t.integer  "count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

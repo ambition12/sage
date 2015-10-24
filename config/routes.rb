@@ -1,4 +1,8 @@
 Sage::Application.routes.draw do
+  resources :trends
+
+  resources :articles
+
   get "graph/status_view"
   get "sage/top"
   # The priority is based upon order of creation: first created -> highest priority.
