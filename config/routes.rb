@@ -1,5 +1,6 @@
 Sage::Application.routes.draw do
 
+  get "entame/entame_view"
   get "mecab/nouncount"
   resources :trends
   resources :articles
