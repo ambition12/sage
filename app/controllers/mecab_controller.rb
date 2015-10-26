@@ -17,11 +17,12 @@ class MecabController < ApplicationController
     end
 
     doc.css('body').each do |elm|
-        text = elm.content.gsub(/(\t|\s|\n|\r|\f|\v)/, "")
-        nm.parse(text) do |n|
-          @wordHash[n.surface] ? @wordHash[n.surface] += 1 : @wordHash[n.surface] = 1 if n.feature.match("名詞")
-        end
+      text = elm.content.gsub(/(\t|\s|\n|\r|\f|\v)/, "")
+      nm.parse(text) do |n|
+        @wordHash[n.surface] ? @wordHash[n.surface] += 1 : @wordHash[n.surface] = 1 if n.feature.match("名詞")
+      end
     end
-    # p @wordHash
+
+    
   end
 end
