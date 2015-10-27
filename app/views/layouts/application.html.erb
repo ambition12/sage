@@ -15,6 +15,9 @@
 
     <%= stylesheet_link_tag "application", :media => "all" %>
 
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
     <!-- For third-generation iPad with high-resolution Retina display: -->
     <!-- Size should be 144 x 144 pixels -->
     <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
@@ -57,11 +60,13 @@
               <li><%= link_to "Link3", "/path3"  %></li>-->
 
               <!--タブ作成-->
+                  <a href="#トピック" class="btn btn-default" role="button">トピック</a>
+                  <a href="#トピック" class="btn btn-default" role="button">トピック</a>
               <ul class="tabgroup targettab1">
-                <li class="btn">
+                <li class="btn btn-default">
                   <a href="#トピック">トピック</a>
                 </li>
-                <li class="btn">
+                <li class="btn btn-default">
                   <a href="#国内">国内</a>
                 </li>
                 <li class="btn">

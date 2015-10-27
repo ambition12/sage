@@ -7,6 +7,7 @@ Sage::Application.routes.draw do
   get "graph/status_view"
   get "sage/top"
   get "sage/entame"
+  get "sage/yourself"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
