@@ -1,0 +1,2 @@
+class YourselfController < ApplicationController
+end
