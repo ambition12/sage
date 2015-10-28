@@ -1,14 +1,14 @@
 Sage::Application.routes.draw do
-
-  get "browse/input"
-  get "mecab/nouncount"
+  get 'browse/input'
+  get 'mecab/nouncount'
   resources :trends
   resources :articles
-  get "graph_rader/status_view_rader"
-  get "graph/status_view"
-  get "sage/top"
-  get "sage/entame"
-  get "sage/yourself"
+  get 'graph_rader/status_view_rader'
+  get 'graph/status_view'
+  get 'sage/top'
+  get 'sage/entame'
+  get 'sage/yourself'
+  get 'entame/entame_view'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
