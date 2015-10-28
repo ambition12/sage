@@ -1,4 +1,12 @@
 Sage::Application.routes.draw do
+  get "economy/economy_view"
+  get "anime/anime_view"
+  get "game/game_view"
+  get "tour/tour_view"
+  get "gourmet/gourmet_view"
+  get "tech/tech_view"
+  get "life/life_view"
+  get "sports/sports_view"
   get 'browse/input'
   get 'mecab/nouncount'
   resources :trends
