@@ -1,5 +1,5 @@
 class GraphController < ApplicationController
-  def status_view    category = [1,3,5,7]
+  def status_view category = [1,3,5,7]
       current_quantity = [1000,5000,3000,8000]
 
       @graph = LazyHighCharts::HighChart.new('graph') do |f|
