@@ -16,7 +16,7 @@
     <%= stylesheet_link_tag "application", :media => "all" %>
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" rel="stylesheet">
 
     <!-- For third-generation iPad with high-resolution Retina display: -->
     <!-- Size should be 144 x 144 pixels -->
@@ -54,86 +54,85 @@
           <a class="brand" href="/sage/top">Sage</a>
           <div class="container-fluid nav-collapse">
 
-              <!--    <li><%= link_to "Link1", "/path1"  %></li>
+            <!--    <li><%= link_to "Link1", "/path1"  %></li>
               <li><%= link_to "Link2", "/path2"  %></li>
               <li><%= link_to "Link3", "/path3"  %></li>-->
 
-
-              <!--タブ作成-->
-                  <a href="#トピック" class="btn btn-default" role="button">トピック</a>
-                  <a href="#トピック" class="btn btn-default" role="button">国内</a>
-                  <a href="#トピック" class="btn btn-default" role="button">国際</a>
-                  <a href="#トピック" class="btn btn-default" role="button">経済</a>
-                  <a href="#トピック" class="btn btn-default" role="button">エンタメ</a>
-                  <a href="#トピック" class="btn btn-default" role="button">スポーツ</a>
-		  <a href="#トピック" class="btn btn-default" role="button">IT・科学</a>
-                  <a href="#トピック" class="btn btn-default" role="button">ライフ</a>
-                  <a href="#トピック" class="btn btn-default" role="button">地域</a>
-                  <a href="#トピック" class="btn btn-default" role="button">雑誌</a>
+            <!--タブ作成-->
+            <a class="btn btn-default" href="#トピック" role="button">トピック</a>
+            <a class="btn btn-default" href="/game/game_view" role="button">ゲーム</a>
+            <a class="btn btn-default" href="/anime/anime_view" role="button">アニメ</a>
+            <a class="btn btn-default" href="/economy/economy_view/" role="button">政治・経済</a>
+            <a class="btn btn-default" href="/entame/entame_view/" role="button">エンタメ</a>
+            <a class="btn btn-default" href="/sports/sports_view/" role="button">スポーツ</a>
+            <a class="btn btn-default" href="/tech/tech_view" role="button">IT・科学</a>
+            <a class="btn btn-default" href="/life/life_view" role="button">ライフ</a>
+            <a class="btn btn-default" href="/tour/tour_view" role="button">旅行</a>
+            <a class="btn btn-default" href="/gourmet/gourmet_view" role="button">グルメ</a>
+          </div>
         </div>
-      </div>
-      <!--/.nav-collapse -->
-    </div>
-  </div>
-
-  <div class="container-fluid">
-    <div class="row-fluid">
-      <div class="span3">
-        <div class="well sidebar-nav">
-          <ul class="nav nav-list">
-            <li class="nav-header">Sidebar</li>
-            <li>
-              <%= link_to "Link2", "/path2"  %>
-            </li>
-            <li>
-              <%= link_to "Link3", "/path3"  %>
-            </li>
-            <li>
-              <%= link_to "Link4", "/path3"  %>
-            </li>
-            <li>
-              <%= link_to "Link5", "/path3"  %>
-            </li>
-            <li>
-              <%= link_to "Link6", "/path3"  %>
-            </li>
-            <li>
-              <%= link_to "Link7", "/path3"  %>
-            </li>
-            <li>
-              <%= link_to "Link8", "/path3"  %>
-            </li>
-            <li>
-              <%= link_to "Link9", "/path3"  %>
-            </li>
-            <li>
-              <%= link_to "Link10", "/path3"  %>
-            </li>
-            <li>
-              <%= link_to "rader", "/graph_rader/status_view_rader"  %>
-            </li>
-            <li>
-              <%= link_to "Date_status", "/graph/status_view"  %>
-            </li>
-          </ul>
-        </div>
-        <!--/.well -->
-      </div>
-      <!--/span-->
-      <div class="span9">
-        <%= bootstrap_flash %>
-        <%= yield %>
+        <!--/.nav-collapse -->
       </div>
     </div>
-    <!--/row-->
 
-    <footer>
-      <p>&copy; Company 2015</p>
-    </footer>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Sidebar</li>
+              <li>
+                <%= link_to "Link2", "/path2"  %>
+              </li>
+              <li>
+                <%= link_to "Link3", "/path3"  %>
+              </li>
+              <li>
+                <%= link_to "Link4", "/path3"  %>
+              </li>
+              <li>
+                <%= link_to "Link5", "/path3"  %>
+              </li>
+              <li>
+                <%= link_to "Link6", "/path3"  %>
+              </li>
+              <li>
+                <%= link_to "Link7", "/path3"  %>
+              </li>
+              <li>
+                <%= link_to "Link8", "/path3"  %>
+              </li>
+              <li>
+                <%= link_to "Link9", "/path3"  %>
+              </li>
+              <li>
+                <%= link_to "Link10", "/path3"  %>
+              </li>
+              <li>
+                <%= link_to "rader", "/graph_rader/status_view_rader"  %>
+              </li>
+              <li>
+                <%= link_to "Date_status", "/graph/status_view"  %>
+              </li>
+            </ul>
+          </div>
+          <!--/.well -->
+        </div>
+        <!--/span-->
+        <div class="span9">
+          <%= bootstrap_flash %>
+          <%= yield %>
+        </div>
+      </div>
+      <!--/row-->
 
-  </div>
-  <!-- /container -->
+      <footer>
+        <p>&copy; Company 2015</p>
+      </footer>
 
-</body>
+    </div>
+    <!-- /container -->
+
+  </body>
 
 </html>
