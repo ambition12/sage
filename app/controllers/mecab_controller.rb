@@ -5,10 +5,10 @@ class MecabController < ApplicationController
     require 'open-uri'
     require 'natto'
 
-    nm = Natto::MeCab.new
+    nm = Natto::MeCab.new("-d /usr/local/lib/mecab/dic/mecab-ipadic-neologd")
     @wordHash = {}
 
-    doc = Nokogiri::HTML(open('http://railstutorial.jp/')) do |config|
+    doc = Nokogiri::HTML(open('http://www.gochiusa.com/news/hp0001/index.html')) do |config|
       config.noblanks
     end
 
@@ -23,6 +23,15 @@ class MecabController < ApplicationController
       end
     end
 
-    
+    @wordHash.each { |key, value|
+      if Trend.find_by(:noun => key) == nil
+        trend = Trend.create(noun: key, count: value)
+      else
+        trend = Trend.find_by(:noun => key)
+        @carrent_count = trend.count
+        @new_count = trend.count + value
+        trend.update(count: @new_count)
+      end
+    }
   end
 end
