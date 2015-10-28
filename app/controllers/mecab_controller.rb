@@ -23,6 +23,15 @@ class MecabController < ApplicationController
       end
     end
 
-    
+    @wordHash.each { |key, value|
+      if Trend.find_by(:noun => key) == nil
+        trend = Trend.create(noun: key, count: value)
+      else
+        trend = Trend.find_by(:noun => key)
+        @carrent_count = trend.count
+        @new_count = trend.count + value
+        trend.update(count: @new_count)
+      end
+    }
   end
 end

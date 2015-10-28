@@ -1,5 +1,6 @@
 Sage::Application.routes.draw do
 
+  get "browse/input"
   get "mecab/nouncount"
   resources :trends
   resources :articles
