@@ -5,11 +5,12 @@ class MecabController < ApplicationController
     require 'open-uri'
     require 'natto'
 
-    nm = Natto::MeCab.new("-d /usr/local/lib/mecab/dic/mecab-ipadic-neologd")
+
+    nm = Natto::MeCab.new
+
     @wordHash = {}
 
-    doc = Nokogiri::HTML(open('http://www.gochiusa.com/news/hp0001/index.html')) do |config|
-      config.noblanks
+    doc = Nokogiri::HTML(open('http://railstutorial.jp/')) do |config|      config.noblanks
     end
 
     doc.search("script").each do |script|
