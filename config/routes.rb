@@ -1,6 +1,7 @@
 Sage::Application.routes.draw do
 
   get "browse/input"
+  get "browse/output"
   get "mecab/nouncount"
   get "entame/entame_view"
   resources :trends
