@@ -23,5 +23,4 @@ Sage::Application.routes.draw do
 
 
   get "sage/yourself/show/:id" => "yourself#show" 
-
 end

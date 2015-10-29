@@ -1,4 +1,4 @@
 class SageController < ApplicationController
-  def top
-  end
+	def top
+	end
 end
