@@ -20,4 +20,7 @@ Sage::Application.routes.draw do
   get "sage/top"
   get "sage/entame"
   get "sage/yourself"
+
+
+  get "sage/yourself/show/:id" => "yourself#show" 
 end

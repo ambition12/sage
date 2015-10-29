@@ -1,4 +1,5 @@
 class YourselfController < ApplicationController
-	def getTrend(trend_id)
+	def show
+	    render :text => "id = #{params[:id]}"
 	end
 end
