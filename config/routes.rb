@@ -22,5 +22,5 @@ Sage::Application.routes.draw do
   get "sage/yourself"
 
 
-  get "sage/yourself/show/:id" => "yourself#show" 
+  get "sage/yourself/:id" => "sage#yourself_update" 
 end

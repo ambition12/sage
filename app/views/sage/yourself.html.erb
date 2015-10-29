@@ -9,11 +9,11 @@
 			<a class="brand" href="/sage/top">トピック</a>
 			<div class="container-fluid nav-collapse">
 				<!--タブ作成-->
-				<%=link_to "Top1","show/1" ,class: "btn btn-default"%>
-				<%=link_to "Top2","show/2" ,class: "btn btn-default"%>					
-				<%=link_to "Top3","show/3" ,class: "btn btn-default"%>				
-				<%=link_to "Top4","show/4" ,class: "btn btn-default"%>					
-				<%=link_to "Top5","show/5" ,class: "btn btn-default"%>
+				<%=link_to "Top1","1" ,class: "btn btn-default"%>
+				<%=link_to "Top2","2" ,class: "btn btn-default"%>					
+				<%=link_to "Top3","3" ,class: "btn btn-default"%>				
+				<%=link_to "Top4","4" ,class: "btn btn-default"%>					
+				<%=link_to "Top5","5" ,class: "btn btn-default"%>
 			</div>
 		</div>
 		<!--/.nav-collapse -->
@@ -22,41 +22,38 @@
 
 <div class="row">
 	<div class="item col-md-4 col-sm-4 col-xs-6">
-		<%= link_to "http://templated.co/", :target => "_blank" do %>
-			<%= image_tag("http://capture.heartrails.com/400x400?http://templated.co/", :class => "img-responsive", :alt => "Facebook") %>
+		<%= link_to $url[0], :target => "_blank" do %>
+			<%= image_tag("http://capture.heartrails.com/400x400?"+$url[0], :class => "img-responsive") %>
 		<% end %> 
 		<p>こんな風に</p>
 	</div>
 	<div class="item col-md-4 col-sm-4 col-xs-6">
-		<%= link_to "http://templated.co/", :target => "_blank" do %>
-			<%= image_tag("http://capture.heartrails.com/400x400?http://templated.co/", :class => "img-responsive", :alt => "Facebook") %>
-		<% end %> 
-		<p>こんな風に</p>
-	</div>
-
-	<div class="item col-md-4 col-sm-4 col-xs-6">
-		<%= link_to "http://templated.co/", :target => "_blank" do %>
-			<%= image_tag("http://capture.heartrails.com/400x400?http://templated.co/", :class => "img-responsive", :alt => "Facebook") %>
-		<% end %> 
-		<p>こんな風に</p>
-	</div>
-
-	<div class="item col-md-4 col-sm-4 col-xs-6">
-		<%= link_to "http://templated.co/", :target => "_blank" do %>
-			<%= image_tag("http://capture.heartrails.com/400x400?http://templated.co/", :class => "img-responsive", :alt => "Facebook") %>
-		<% end %> 
-		<p>こんな風に</p>
-	</div>
-
-	<div class="item col-md-4 col-sm-4 col-xs-6">
-		<%= link_to "http://templated.co/", :target => "_blank" do %>
-			<%= image_tag("http://capture.heartrails.com/400x400?http://templated.co/", :class => "img-responsive", :alt => "Facebook") %>
+		<%= link_to $url[1], :target => "_blank" do %>
+			<%= image_tag("http://capture.heartrails.com/400x400?"+$url[1], :class => "img-responsive") %>
 		<% end %> 
 		<p>こんな風に</p>
 	</div>
 	<div class="item col-md-4 col-sm-4 col-xs-6">
-		<%= link_to "http://templated.co/", :target => "_blank" do %>
-			<%= image_tag("http://capture.heartrails.com/400x400?http://templated.co/", :class => "img-responsive", :alt => "Facebook") %>
+		<%= link_to $url[2], :target => "_blank" do %>
+			<%= image_tag("http://capture.heartrails.com/400x400?"+$url[2], :class => "img-responsive") %>
+		<% end %> 
+		<p>こんな風に</p>
+	</div>
+	<div class="item col-md-4 col-sm-4 col-xs-6">
+		<%= link_to $url[3], :target => "_blank" do %>
+			<%= image_tag("http://capture.heartrails.com/400x400?"+$url[3], :class => "img-responsive") %>
+		<% end %> 
+		<p>こんな風に</p>
+	</div>
+	<div class="item col-md-4 col-sm-4 col-xs-6">
+		<%= link_to $url[4], :target => "_blank" do %>
+			<%= image_tag("http://capture.heartrails.com/400x400?"+$url[4], :class => "img-responsive") %>
+		<% end %> 
+		<p>こんな風に</p>
+	</div>
+	<div class="item col-md-4 col-sm-4 col-xs-6">
+		<%= link_to $url[5], :target => "_blank" do %>
+			<%= image_tag("http://capture.heartrails.com/400x400?"+$url[5], :class => "img-responsive") %>
 		<% end %> 
 		<p>こんな風に</p>
 	</div>
