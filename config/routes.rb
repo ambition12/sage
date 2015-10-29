@@ -21,6 +21,6 @@ Sage::Application.routes.draw do
   get "sage/entame"
   get "sage/yourself"
 
-
+  get "anime/browse/input/:url/:genre" => "browse#input"
   get "sage/yourself/:id" => "sage#yourself_update" 
 end
