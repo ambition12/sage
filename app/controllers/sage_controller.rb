@@ -1,9 +1,11 @@
+# -*- coding: utf-8 -*-
 class SageController < ApplicationController
 	#記事のグローバル配列(更新する際に配列の中身を変更し、リダイレクトする)
 	$url = ["http://www.google.com","http://www.google.com","http://www.google.com","http://www.google.com","http://www.google.com","http://www.google.com"]
 	#$keyword(トレンド記事を検索するキーワード)
 	APIKEY = 'Av6GLD1hPwWcFziuhtlLqp6yCBXiZYGKJ8SXHox80dY'
 	$keyword = ['人工知能','Rails','WBS','twitter','マイナンバー']
+
 	#
 	def yourself		
 	end
@@ -34,6 +36,6 @@ class SageController < ApplicationController
 			$url[num] = results[0][:News][num][:Url]		
 		end
 
-		redirect_to :action => "yourself"	
+		redirect_to :action => "yourself"
 	end
 end
