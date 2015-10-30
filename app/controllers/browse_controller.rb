@@ -3,17 +3,14 @@ class BrowseController < ApplicationController
     url = params[:url]
     genre = params[:genre]
 
-    # link_to url, :target => "_blank" do
-    # end
-
     if Article.find_by(url: url).nil?
-      @article = Article.create(url: url, genre: genre, count: 1)
+      Article.create(url: url, genre: genre, count: 1)
     else
-      @article = Article.find_by(url: url)
-      @carrent_article_count = @article.count
-      @new_article_count = @article.count + 1
-      @article.update(count: @new_article_count)
+      article = Article.find_by(url: url)
+      new_article_count = article.count + 1
+      article.update(count: new_article_count)
     end
+    redirect_to url
   end
 
   def output
