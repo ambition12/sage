@@ -10,8 +10,6 @@ class BrowseController < ApplicationController
       new_article_count = article.count + 1
       article.update(count: new_article_count)
     end
-
-    @iurl = url
     redirect_to url
   end
 
