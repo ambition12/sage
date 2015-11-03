@@ -12,7 +12,9 @@ Sage::Application.routes.draw do
   resources :trends
   resources :articles
 
-  get 'graph_rader/status_view_rader'
+  get 'graph_rader/status_view_rader' => 'browse#output'
+  get 'graph_rader/status_view_rader/count' => 'graph_rader#status_view_rader'
+
   get 'graph/status_view'
   get 'sage/top'
   get 'sage/yourself'

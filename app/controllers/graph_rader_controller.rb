@@ -1,7 +1,18 @@
 class GraphRaderController < ApplicationController
   def status_view_rader
-    genre = ['国内','国際','経済','エンタメ','スポーツ','IT・科学','ライフ','地域','雑誌']
-    aData = [7,3,8,5,2,9,5,2,4]
+    genre = ['ゲーム','アニメ','政治・経済','エンタメ','スポーツ','IT・科学','ライフ','旅行','グルメ']
+
+    aData = Array.new(params[:count].length,0)
+    defaultData = Array.new(params[:count].length,0)
+    params[:count].each_with_index do|count,index|
+      defaultData[index] = count.to_i
+    end
+
+    max = defaultData.max
+
+    defaultData.each_with_index do|count,index|
+      aData[index] = 10 * count / max
+    end
 
     @graph = LazyHighCharts::HighChart.new('graph') do |f|
       f.chart(polar: true,type:'line') #グラフの種類
