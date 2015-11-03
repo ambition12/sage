@@ -14,8 +14,8 @@ class SageController < ApplicationController
     bing = Bing.new(APIKEY, 10, 'News')
 
     pid = params[:id].to_i
-    if pid <= $keyword.length then
-      results = bing.search($keyword[pid - 1])
+    results = bing.search($keyword[pid - 1])
+    if (results[0][:News][0] != nil)
       for num in 0...6 do
         articleUrl = results[0][:News][num][:Url]
         if articleUrl != nil then
