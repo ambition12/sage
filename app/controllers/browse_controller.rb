@@ -18,7 +18,7 @@ class BrowseController < ApplicationController
     genre2 = Article.find_all_by_genre('anime')
     genre3 = Article.find_all_by_genre('economy')
     genre4 = Article.find_all_by_genre('entame')
-    genre5 = Article.find_all_by_genre('sport')
+    genre5 = Article.find_all_by_genre('sports')
     genre6 = Article.find_all_by_genre('tech')
     genre7 = Article.find_all_by_genre('life')
     genre8 = Article.find_all_by_genre('tour')
@@ -31,6 +31,7 @@ class BrowseController < ApplicationController
         count[i] = count[i] + item.count
       end
     end
+    redirect_to controller: :graph_rader, action: :status_view_rader, count: count
     @pcount = count
   end
 end
