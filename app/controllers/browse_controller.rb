@@ -10,7 +10,7 @@ class BrowseController < ApplicationController
       new_article_count = article.count + 1
       article.update(count: new_article_count)
     end
-    redirect_to url
+    redirect_to controller: :mecab, action: :nouncount, url: url
   end
 
   def output
