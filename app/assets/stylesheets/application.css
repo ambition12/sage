@@ -11,3 +11,12 @@
  *= require_self
  *= require_tree .
  */
+p{
+	overflow: hidden;
+	width: 305px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-moz-text-overflow:ellipsis; /* Firefox */
+	-o-text-overflow: ellipsis; /* Opera */
+
+}
