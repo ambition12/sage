@@ -11,7 +11,7 @@ class GraphRaderController < ApplicationController
     max = defaultData.max
 
     defaultData.each_with_index do|count,index|
-      aData[index] = 10 * count / max
+      aData[index] = 1000 * count / max
     end
 
     @graph = LazyHighCharts::HighChart.new('graph') do |f|
@@ -20,7 +20,7 @@ class GraphRaderController < ApplicationController
       f.title(text: 'Status')         #タイトル
       f.xAxis(categories: genre,tickmarkPlacement:'on')
       #categories:各項目の名前,tickmarkPlacement:'on'だとメモリ表示がカテゴリーの表示に沿う
-      f.yAxis(gridLineInterpolation: 'polygon',lineWidth:0,min:0,max:10) #各項目の最大値やら
+      f.yAxis(gridLineInterpolation: 'polygon',lineWidth:0,min:0,max:1000) #各項目の最大値やら
       f.series(name:'ユーザ名',data: aData,pointPlacement:'on')
                                                    #各データ
       f.legend(align: 'right',
