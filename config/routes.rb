@@ -11,7 +11,10 @@ Sage::Application.routes.draw do
 
   resources :trends
   resources :articles
-  get 'graph_rader/status_view_rader'
+
+  get 'graph_rader/status_view_rader' => 'browse#output'
+  get 'graph_rader/status_view_rader/count' => 'graph_rader#status_view_rader'
+
   get 'graph/status_view'
   get 'sage/top'
   get 'sage/yourself'
@@ -25,5 +28,10 @@ Sage::Application.routes.draw do
   get 'sports/sports_view/browse/input' => 'browse#input'
   get 'tech/browse/input' => 'browse#input'
   get 'tour/browse/input' => 'browse#input'
+
   get 'sage/yourself/:id' => 'sage#yourself_update'
+  get 'sage/keyword_update/:trends1/:trends2/:trends3/:trends4/:trends5' => 'sage#keyword_update'
+
+  get 'mecab/nouncount/url' => 'mecab#nouncount'
+  get 'mecab/output' => 'mecab#output'
 end

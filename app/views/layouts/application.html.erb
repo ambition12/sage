@@ -59,7 +59,7 @@
               <li><%= link_to "Link3", "/path3"  %></li>-->
 
             <!--タブ作成-->
-            <a class="btn btn-default" href="/sage/yourself" role="button">トピック</a>
+            <a class="btn btn-default" href="/mecab/output" role="button">トピック</a>
             <a class="btn btn-default" href="/game/game_view" role="button">ゲーム</a>
             <a class="btn btn-default" href="/anime/anime_view" role="button">アニメ</a>
             <a class="btn btn-default" href="/economy/economy_view/" role="button">政治・経済</a>
@@ -82,31 +82,31 @@
             <ul class="nav nav-list">
               <li class="nav-header">Sidebar</li>
               <li>
-                <%= link_to "Link2", "/path2"  %>
+                <p>ゲーム　　　:<%= @point[0]  %></p>
               </li>
               <li>
-                <%= link_to "Link3", "/path3"  %>
+                <p>アニメ　　　:<%= @point[1]  %></p>
               </li>
               <li>
-                <%= link_to "Link4", "/path3"  %>
+                <p>政治・経済　:<%= @point[2]  %></p>
               </li>
               <li>
-                <%= link_to "Link5", "/path3"  %>
+                <p>エンタメ　　:<%= @point[3]  %></p>
               </li>
               <li>
-                <%= link_to "Link6", "/path3"  %>
+                <p>スポーツ　　:<%= @point[4]  %></p>
               </li>
               <li>
-                <%= link_to "Link7", "/path3"  %>
+                <p>IT・科学　　:<%= @point[5]  %></p>
               </li>
               <li>
-                <%= link_to "Link8", "/path3"  %>
+                <p>ライフ　　　:<%= @point[6]  %></p>
               </li>
               <li>
-                <%= link_to "Link9", "/path3"  %>
+                <p>旅行　　　　:<%= @point[7]  %></p>
               </li>
               <li>
-                <%= link_to "Link10", "/path3"  %>
+                <p>グルメ　　　:<%= @point[8]  %></p>
               </li>
               <li>
                 <%= link_to "rader", "/graph_rader/status_view_rader"  %>
