@@ -11,9 +11,11 @@ class TechController < ApplicationController
     tech_results = JSON.parse(json)
 
     @tech_url = Array.new(tech_results['articleContents'].length + 1, '')
+    @tech_title = Array.new(tech_results['articleContents'].length + 1, '')
     for num in 1...tech_results['articleContents'].length
       #				puts results["articleContents"][num]["contentData"]["title"]
       @tech_url[num] = tech_results['articleContents'][num]['contentData']['linkUrl']
+      @tech_title[num] = tech_results['articleContents'][num]['contentData']['title']
     end
   end
 end

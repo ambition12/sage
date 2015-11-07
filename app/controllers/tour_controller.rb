@@ -11,9 +11,11 @@ class TourController < ApplicationController
     tour_results = JSON.parse(json)
 
     @tour_url = Array.new(tour_results['articleContents'].length + 1, '')
+    @tour_title = Array.new(tour_results['articleContents'].length + 1, '')
     for num in 1...tour_results['articleContents'].length
       #				puts results["articleContents"][num]["contentData"]["title"]
       @tour_url[num] = tour_results['articleContents'][num]['contentData']['linkUrl']
+      @tour_title[num] = tour_results['articleContents'][num]['contentData']['title']
     end
   end
 end

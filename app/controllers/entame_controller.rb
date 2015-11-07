@@ -11,9 +11,11 @@ class EntameController < ApplicationController
     entame_results = JSON.parse(json)
 
     @entame_url = Array.new(entame_results['articleContents'].length + 1, '')
+    @entame_title = Array.new(entame_results['articleContents'].length + 1, '')
     for num in 1...entame_results['articleContents'].length
       #				puts results["articleContents"][num]["contentData"]["title"]
       @entame_url[num] = entame_results['articleContents'][num]['contentData']['linkUrl']
+      @entame_title[num] = entame_results['articleContents'][num]['contentData']['title']
     end
   end
 end
