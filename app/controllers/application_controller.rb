@@ -26,13 +26,12 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    @point = Array.new(count.length,0)
+    @point = Array.new(count.length, 0)
 
     max = count.max
 
-    count.each_with_index do|count,index|
-      @point[index] = 10 * count / max
+    count.each_with_index do|count, index|
+      @point[index] = 1000 * count / max
     end
-
   end
 end

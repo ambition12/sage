@@ -11,8 +11,10 @@ class AnimeController < ApplicationController
     anime_results = JSON.parse(json)
 
     @anime_url = Array.new(anime_results['articleContents'].length + 1, '')
+    @anime_title = Array.new(anime_results['articleContents'].length + 1, '')
     for num in 1...anime_results['articleContents'].length
       @anime_url[num] = anime_results['articleContents'][num]['contentData']['linkUrl']
+      @anime_title[num] = anime_results['articleContents'][num]['contentData']['title']
     end
   end
 end
