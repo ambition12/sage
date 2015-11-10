@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    if Article.find_by(username: username, url: url).nil?
+    if Status.find_by(username: username) == nil
       Status.create(username: username, game: count[0], anime: count[1], economy: count[2], entame: count[3], sports: count[4], tech: count[5], life: count[6], tour: count[7], gourmet: count[8])
     else
       status = Status.find_by(username: username)
@@ -39,6 +39,7 @@ class ApplicationController < ActionController::Base
 
     max = count.max
 
+    @point = Array.new(count.length,0)
     count.each_with_index do |count, index|
       if (max != 0)
         @point[index] = 1000 * count / max
