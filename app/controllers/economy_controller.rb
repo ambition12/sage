@@ -11,8 +11,10 @@ class EconomyController < ApplicationController
     economy_results = JSON.parse(json)
 
     @economy_url = Array.new(economy_results['articleContents'].length + 1, '')
+    @economy_title = Array.new(economy_results['articleContents'].length + 1, '')
     for num in 1...economy_results['articleContents'].length
       @economy_url[num] = economy_results['articleContents'][num]['contentData']['linkUrl']
+      @economy_title[num] = economy_results['articleContents'][num]['contentData']['title']
     end
   end
 end

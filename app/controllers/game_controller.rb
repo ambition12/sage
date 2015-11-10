@@ -11,9 +11,11 @@ class GameController < ApplicationController
     game_results = JSON.parse(json)
 
     @game_url = Array.new(game_results['articleContents'].length + 1, '')
+    @game_title = Array.new(game_results['articleContents'].length + 1, '')
     for num in 1...game_results['articleContents'].length
       #				puts results["articleContents"][num]["contentData"]["title"]
       @game_url[num] = game_results['articleContents'][num]['contentData']['linkUrl']
+      @game_title[num] = game_results['articleContents'][num]['contentData']['title']
     end
   end
 end

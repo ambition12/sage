@@ -13,7 +13,7 @@
  */
 p{
 	overflow: hidden;
-	width: 305px;
+	width: 15em;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	-moz-text-overflow:ellipsis; /* Firefox */

@@ -8,8 +8,8 @@ class GraphController < ApplicationController
       f.series(name: '日にち', data: current_quantity)
       f.chart(type: 'column')
 
-      # days = [1, 3, 5, 7]
-      current_quantity = [1000, 5000, 3000, 8000]
+      days = [1, 3, 5, 7]
+      current_quantity = [10, 5, 3, 8]
     end
-end
+  end
 end

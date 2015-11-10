@@ -11,9 +11,11 @@ class GourmetController < ApplicationController
     gourmet_results = JSON.parse(json)
 
     @gourmet_url = Array.new(gourmet_results['articleContents'].length + 1, '')
+    @gourmet_title = Array.new(gourmet_results['articleContents'].length + 1, '')
     for num in 1...gourmet_results['articleContents'].length
       #				puts results["articleContents"][num]["contentData"]["title"]
       @gourmet_url[num] = gourmet_results['articleContents'][num]['contentData']['linkUrl']
+      @gourmet_title[num] = gourmet_results['articleContents'][num]['contentData']['title']
     end
   end
 end

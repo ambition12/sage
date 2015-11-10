@@ -11,9 +11,11 @@ class LifeController < ApplicationController
     life_results = JSON.parse(json)
 
     @life_url = Array.new(life_results['articleContents'].length + 1, '')
+    @life_title = Array.new(life_results['articleContents'].length + 1, '')
     for num in 1...life_results['articleContents'].length
       #				puts results["articleContents"][num]["contentData"]["title"]
       @life_url[num] = life_results['articleContents'][num]['contentData']['linkUrl']
+      @life_title[num] = life_results['articleContents'][num]['contentData']['title']
     end
   end
 end
