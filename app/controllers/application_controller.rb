@@ -1,17 +1,14 @@
 class ApplicationController < ActionController::Base
-  $username = 'testuser1'
-
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :trends_update, :status_update
+  before_action :trends_update, :status_update ,if: :authenticate_user!
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
   protect_from_forgery with: :exception
 
   protected
-
   def configure_permitted_parameters
     #strong parametersを設定し、usernameを許可
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :password, :password_confirmation) }
@@ -21,13 +18,14 @@ class ApplicationController < ActionController::Base
 
   private
   def trends_update
-    if MyTrend.find_by(username: $username).nil?
-      MyTrend.create(username: $username)
+    username = current_user.username
+    if MyTrend.find_by(username: username).nil?
+      MyTrend.create(username: username)
     end
   end
 
   def status_update
-    username = $username
+    username = current_user.username
 
     genre1 = Article.where(username: username, genre: 'game')
     genre2 = Article.where(username: username, genre: 'anime')
