@@ -3,5 +3,6 @@ class AddColumnsToUsers < ActiveRecord::Migration
     add_column :users, :provider, :string
     add_column :users, :uid, :string
     add_column :users, :username, :string, default: "anonymous"
+
   end
 end
