@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<div class="span9">
+  <% if user_signed_in? %>
+      <!--
+							<strong<%= link_to current_user.username, pages_show_path %></strong>
+							-->
+      <%= link_to 'プロフィール変更', edit_user_registration_path, class: "btn btn-default" %>
+      <%= link_to 'ログアウト', destroy_user_session_path, class: "btn btn-default", method: :delete %>
+  <% else %>
+      <%= link_to 'サインアップ', new_user_registration_path, class: "btn btn-default" %>
+      <%= link_to 'ログイン', new_user_session_path, class: "btn btn-default" %>
+  <% end %>
+  <%= bootstrap_flash %>
+  <%= yield %>
+</div>
+<!--/row-->
+
+<footer>
+  <p>&copy; Company 2015</p>
+</footer>
+
+</body>
+
+</html>

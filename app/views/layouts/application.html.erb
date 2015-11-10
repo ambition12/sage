@@ -72,16 +72,6 @@
 						<a class="btn btn-default" href="/life/life_view" role="button">ライフ</a>
 						<a class="btn btn-default" href="/tour/tour_view" role="button">旅行</a>
 						<a class="btn btn-default" href="/gourmet/gourmet_view" role="button">グルメ</a>
-						<% if user_signed_in? %>
-							<!--
-							<strong<%= link_to current_user.username, pages_show_path %></strong>
-							-->
-							<%= link_to 'プロフィール変更', edit_user_registration_path,class: "btn btn-default" %>
-							<%= link_to 'ログアウト', destroy_user_session_path, class: "btn btn-default", method: :delete %>
-						<% else %>
-							<%= link_to 'サインアップ', new_user_registration_path, class: "btn btn-default"  %>
-							<%= link_to 'ログイン', new_user_session_path, class: "btn btn-default" %>
-						<% end %>
 					</div>
 				</div>
 				<!--/.nav-collapse -->
@@ -127,15 +117,30 @@
 							<li>
 							<%= link_to "Date_status", "/graph/status_view"  %>
 							</li>
+                          <% if user_signed_in? %>
+                              <!--
+							<strong<%= link_to current_user.username, pages_show_path %></strong>
+							-->
+                              <li>
+                                <%= link_to 'プロフィール変更', edit_user_registration_path%>
+                              </li>
+                              <li>
+                                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+                              </li>
+                          <% else %>
+                              <li>
+                                <%= link_to 'サインアップ', new_user_registration_path%>
+                              </li>
+                              <li>
+                                <%= link_to 'ログイン', new_user_session_path %>
+                              </li>
+                          <% end %>
 						</ul>
 					</div>
 					<!--/.well -->
 				</div>
-				<!--/span-->
-				<div class="span9">
 					<%= bootstrap_flash %>
 					<%= yield %>
-				</div>
 			</div>
 			<!--/row-->
 
