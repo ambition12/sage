@@ -5,7 +5,8 @@ class MecabController < ApplicationController
     require 'natto'
 
     url = params[:url]
-    user_dic = '/Users/ambition/rails_projects/sage/app/assets/neologd.dic'
+    # nm = Natto::MeCab.new
+    user_dic = '/Users/Tomo/Git/RailsProject/Sage/app/assets/neologd.dic'
     nm = Natto::MeCab.new("-u #{user_dic}")
 
     wordHash = {}
@@ -24,23 +25,25 @@ class MecabController < ApplicationController
     end
 
     wordHash.each do |key, value|
-      if Trend.find_by(noun: key).nil?
-        Trend.create(noun: key, count: value)
+      if Trend.find_by(username: $username, noun: key).nil?
+        Trend.create(username: $username, noun: key, count: value)
       else
-        trend = Trend.find_by(noun: key)
+        trend = Trend.find_by(username: $username, noun: key)
         new_count = trend.count + value
         trend.update(count: new_count)
       end
     end
-    redirect_to url
-  end
 
-  def output
-    trends_desc = Trend.order(:count).reverse_order.limit(5)
-    @mytrends = Array.new(5, 'null')
-    trends_desc.each_with_index do |item, index|
-      @mytrends[index] = item.noun
+    trends_desc = Trend.where.not(noun: "( )",noun: %w(A B C D E F G H I J K L M N O P Q R S T U V W X X Y Z a b c d e f g h i j k l m n o p q r s t u v w x y z 1 2 3 4 5 6 7 8 9 0 { } [ ] ? < > + * @ ` | ¥ ^ ~ = & % $ # " ! " _ ; : - / . ,)).order(:count).reverse_order.limit(5)
+
+    if MyTrend.find_by(username: $username).nil?
+      MyTrend.create(username: $username)
+      mytrends = MyTrend.find_by(username: $username)
+    else
+      mytrends = MyTrend.find_by(username: $username)
     end
-    redirect_to controller: :sage, action: :keyword_update, trends1: @mytrends[0], trends2: @mytrends[1], trends3: @mytrends[2], trends4: @mytrends[3], trends5: @mytrends[4]
+    mytrends.update(one:trends_desc[0].noun,two:trends_desc[1].noun,three:trends_desc[2].noun,four:trends_desc[3].noun,five:trends_desc[4].noun)
+
+    redirect_to url
   end
 end

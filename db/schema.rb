@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110054025) do
+ActiveRecord::Schema.define(version: 20151110104811) do
 
   create_table "articles", force: true do |t|
     t.string   "username"
@@ -25,6 +25,17 @@ ActiveRecord::Schema.define(version: 20151110054025) do
   create_table "friends", force: true do |t|
     t.string   "username"
     t.string   "friendname"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "my_trends", force: true do |t|
+    t.string   "username"
+    t.string   "one"
+    t.string   "two"
+    t.string   "three"
+    t.string   "four"
+    t.string   "five"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -45,6 +56,7 @@ ActiveRecord::Schema.define(version: 20151110054025) do
   end
 
   create_table "trends", force: true do |t|
+    t.string   "username"
     t.string   "noun"
     t.integer  "count"
     t.datetime "created_at"

@@ -36,7 +36,15 @@ class SageController < ApplicationController
   end
 
   def keyword_update
-    $keyword = [params[:trends1], params[:trends2], params[:trends3], params[:trends4], params[:trends5]]
+    mytrends = MyTrend.find_by(username: $username)
+    keyword_tmp = Array.new(5,"null")
+    keyword_tmp[0] = mytrends.one
+    keyword_tmp[1] = mytrends.two
+    keyword_tmp[2] = mytrends.three
+    keyword_tmp[3] = mytrends.four
+    keyword_tmp[4] = mytrends.five
+
+    $keyword = keyword_tmp
     redirect_to action: "yourself_update", id: 1
   end
 end

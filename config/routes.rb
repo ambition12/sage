@@ -32,10 +32,9 @@ Sage::Application.routes.draw do
 	get 'tour/browse/input' => 'browse#input'
 
 	get 'sage/yourself/:id' => 'sage#yourself_update'
-	get 'sage/keyword_update/:trends1/:trends2/:trends3/:trends4/:trends5' => 'sage#keyword_update'
 
 	get 'mecab/nouncount/url' => 'mecab#nouncount'
-	get 'mecab/output' => 'mecab#output'
+	get 'mecab/output' => 'sage#keyword_update'
 
 	# sign up with twitter omniauth
 	root 'pages#index'
