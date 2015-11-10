@@ -16,28 +16,32 @@ class SageController < ApplicationController
     bing = Bing.new(APIKEY, 10, 'News')
 
     pid = params[:id].to_i
-    results = bing.search($keyword[pid - 1])
-    if (results[0][:News][0] != nil)
-      for num in 0...6 do
-        articleUrl = results[0][:News][num][:Url]
-        articleTitle = results[0][:News][num][:Title]
-        if articleUrl != nil then
-          $url[num] = articleUrl
-          $title[num] = articleTitle
+    if !(Trend.find_by(username: current_user.username).nil?)
+      results = bing.search($keyword[pid - 1])
+      if (results[0][:News][0] != nil)
+        for num in 0...6 do
+          articleUrl = results[0][:News][num][:Url]
+          articleTitle = results[0][:News][num][:Title]
+          if articleUrl != nil then
+            $url[num] = articleUrl
+            $title[num] = articleTitle
+          end
+        end
+      else
+        for num in 0...6 do
+          $url[num] = $default_url
+          $title[num] = $default_title
         end
       end
     else
-      for num in 0...6 do
-        $url[num] = $default_url
-        $title[num] = $default_title
-      end
+      $keyword = Array.new(5, "google")
     end
     redirect_to :action => "yourself"
   end
 
   def keyword_update
-    mytrends = MyTrend.find_by(username: username)
-    keyword_tmp = Array.new(5,"null")
+    mytrends = MyTrend.find_by(username: current_user.username)
+    keyword_tmp = Array.new(5, "null")
     keyword_tmp[0] = mytrends.one
     keyword_tmp[1] = mytrends.two
     keyword_tmp[2] = mytrends.three
