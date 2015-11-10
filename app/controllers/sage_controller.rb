@@ -36,7 +36,7 @@ class SageController < ApplicationController
   end
 
   def keyword_update
-    mytrends = MyTrend.find_by(username: $username)
+    mytrends = MyTrend.find_by(username: username)
     keyword_tmp = Array.new(5,"null")
     keyword_tmp[0] = mytrends.one
     keyword_tmp[1] = mytrends.two

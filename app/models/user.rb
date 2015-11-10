@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 				 :recoverable, :rememberable, :trackable, :validatable,
 				 :authentication_keys => [:username]
 
+
 	#usernameを必須とする
 	validates_uniqueness_of :username
 	validates_presence_of :username

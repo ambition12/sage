@@ -1,6 +1,6 @@
 class BrowseController < ApplicationController
   def input
-    username = $username
+    username = current_user.username
     url = params[:url]
     genre = params[:genre]
 
@@ -15,7 +15,7 @@ class BrowseController < ApplicationController
   end
 
   def output
-    username = $username
+    username = current_user.username
 
     genre1 = Article.where(username: username, genre: 'game')
     genre2 = Article.where(username: username, genre: 'anime')
