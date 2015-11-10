@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20151110104811) do
     t.integer  "life"
     t.integer  "tour"
     t.integer  "gourmet"
+    t.string   "major"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

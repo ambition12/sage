@@ -17,15 +17,9 @@ class ApplicationController < ActionController::Base
 
 
   private
-  def trends_update
-    username = current_user.username
-    if MyTrend.find_by(username: username).nil?
-      MyTrend.create(username: username)
-    end
-  end
-
   def status_update
     username = current_user.username
+    genre = ["game","anime","economy","entame","sports","tech","life","tour","gourmet"]
 
     genre1 = Article.where(username: username, genre: 'game')
     genre2 = Article.where(username: username, genre: 'anime')
@@ -45,14 +39,16 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    max = count.max
+    major = genre[count.index(max)]
+
     if Status.find_by(username: username).nil?
-      Status.create(username: username, game: count[0], anime: count[1], economy: count[2], entame: count[3], sports: count[4], tech: count[5], life: count[6], tour: count[7], gourmet: count[8])
+      Status.create(username: username, game: count[0], anime: count[1], economy: count[2], entame: count[3], sports: count[4], tech: count[5], life: count[6], tour: count[7], gourmet: count[8], major: major)
     else
       status = Status.find_by(username: username)
-      status.update(game: count[0], anime: count[1], economy: count[2], entame: count[3], sports: count[4], tech: count[5], life: count[6], tour: count[7], gourmet: count[8])
+      status.update(game: count[0], anime: count[1], economy: count[2], entame: count[3], sports: count[4], tech: count[5], life: count[6], tour: count[7], gourmet: count[8], major: major)
     end
 
-    max = count.max
 
     @point = Array.new(count.length, 0)
     count.each_with_index do |count, index|

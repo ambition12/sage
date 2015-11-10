@@ -11,6 +11,7 @@ class CreateStatuses < ActiveRecord::Migration
       t.integer :life
       t.integer :tour
       t.integer :gourmet
+      t.string :major
 
       t.timestamps
     end
