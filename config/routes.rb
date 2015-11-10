@@ -1,7 +1,10 @@
 Sage::Application.routes.draw do
   devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks" }
-	get "pages/index"
+	root 'sage#top'
+
+  get "pages/index"
 	get "pages/show"
+
 	get 'entame/entame_view'
 	get 'economy/economy_view'
 	get 'anime/anime_view'
@@ -37,8 +40,5 @@ Sage::Application.routes.draw do
 	get 'mecab/output' => 'sage#keyword_update'
 
 	# sign up with twitter omniauth
-	root 'pages#index'
-	get 'pages/show'
-
-
+	get 'users/sign_out' => 'sage#top'
 end

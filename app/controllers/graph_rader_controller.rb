@@ -24,7 +24,7 @@ class GraphRaderController < ApplicationController
       f.xAxis(categories: genre, tickmarkPlacement: 'on')
       # categories:各項目の名前,tickmarkPlacement:'on'だとメモリ表示がカテゴリーの表示に沿う
       f.yAxis(gridLineInterpolation: 'polygon', lineWidth: 0, min: 0, max: 1000) # 各項目の最大値やら
-      f.series(name: 'ユーザ名', data: aData, pointPlacement: 'on')
+      f.series(name: 'ジャンル', data: aData, pointPlacement: 'on')
       # 各データ
       f.legend(align: 'right',
                verticalAlign: 'top',
