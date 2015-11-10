@@ -1,13 +1,19 @@
 class ApplicationController < ActionController::Base
-  $username = 'testuser'
+  $username = 'testuser1'
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :status_update
+  before_action :trends_update, :status_update
 
   private
+
+  def trends_update
+    if MyTrend.find_by(username: $username).nil?
+      MyTrend.create(username: $username)
+    end
+  end
 
   def status_update
     username = $username
@@ -39,7 +45,7 @@ class ApplicationController < ActionController::Base
 
     max = count.max
 
-    @point = Array.new(count.length,0)
+    @point = Array.new(count.length, 0)
     count.each_with_index do |count, index|
       if (max != 0)
         @point[index] = 1000 * count / max
