@@ -1,4 +1,5 @@
 Sage::Application.routes.draw do
+  get "friend/show"
   devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks" }
 	root 'sage#top'
 
