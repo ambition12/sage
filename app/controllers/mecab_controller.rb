@@ -6,7 +6,7 @@ class MecabController < ApplicationController
 
     url = params[:url]
     # nm = Natto::MeCab.new
-    user_dic = '/Users/Tomo/Git/RailsProject/Sage/app/assets/neologd.dic'
+    user_dic = './app/assets/neologd.dic'
     nm = Natto::MeCab.new("-u #{user_dic}")
 
     wordHash = {}
@@ -34,7 +34,7 @@ class MecabController < ApplicationController
       end
     end
 
-    trends_desc = Trend.where.not(noun: "( )",noun: %w(A B C D E F G H I J K L M N O P Q R S T U V W X X Y Z a b c d e f g h i j k l m n o p q r s t u v w x y z 1 2 3 4 5 6 7 8 9 0 { } [ ] ? < > + * @ ` | ¥ ^ ~ = & % $ # " ! " _ ; : - / . ,)).order(:count).reverse_order.limit(5)
+    trends_desc = Trend.where.not(noun: %w(px -- margin ... ( ) A B C D E F G H I J K L M N O P Q R S T U V W X X Y Z a b c d e f g h i j k l m n o p q r s t u v w x y z 1 2 3 4 5 6 7 8 9 0 { } [ ] ? < > + * @ ` | ¥ ^ ~ = & % $ # " ! " _ ; : - / . ,)).order(:count).reverse_order.limit(5).where(username: $username)
 
     if MyTrend.find_by(username: $username).nil?
       MyTrend.create(username: $username)
