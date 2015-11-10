@@ -5,7 +5,7 @@ class MecabController < ApplicationController
     require 'natto'
 
     url = params[:url]
-    user_dic = 'assets/neologd'
+    user_dic = '/Users/ambition/rails_projects/sage/app/assets/neologd.dic'
     nm = Natto::MeCab.new("-u #{user_dic}")
 
     wordHash = {}
