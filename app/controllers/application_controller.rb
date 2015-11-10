@@ -1,46 +1,59 @@
 class ApplicationController < ActionController::Base
-	# Prevent CSRF attacks by raising an exception.
-	# For APIs, you may want to use :null_session instead.
-	protect_from_forgery with: :exception
+  $username = 'testuser'
 
-	before_action :status_update
+  # Prevent CSRF attacks by raising an exception.
+  # For APIs, you may want to use :null_session instead.
+  protect_from_forgery with: :exception
 
-	private
+  before_action :status_update
 
-	def status_update
-		genre1 = Article.find_all_by_genre('game')
-		genre2 = Article.find_all_by_genre('anime')
-		genre3 = Article.find_all_by_genre('economy')
-		genre4 = Article.find_all_by_genre('entame')
-		genre5 = Article.find_all_by_genre('sports')
-		genre6 = Article.find_all_by_genre('tech')
-		genre7 = Article.find_all_by_genre('life')
-		genre8 = Article.find_all_by_genre('tour')
-		genre9 = Article.find_all_by_genre('gourmet')
-		get_article = [genre1, genre2, genre3, genre4, genre5, genre6, genre7, genre8, genre9]
+  private
 
-		count = Array.new(9, 0)
-		get_article.each.with_index do |genre, i|
-			genre.each do |item|
-				count[i] = count[i] + item.count
-			end
-		end
+  def status_update
+    username = $username
 
-		@point = Array.new(count.length, 0)
+    genre1 = Article.where(username: username, genre: 'game')
+    genre2 = Article.where(username: username, genre: 'anime')
+    genre3 = Article.where(username: username, genre: 'economy')
+    genre4 = Article.where(username: username, genre: 'entame')
+    genre5 = Article.where(username: username, genre: 'sports')
+    genre6 = Article.where(username: username, genre: 'tech')
+    genre7 = Article.where(username: username, genre: 'life')
+    genre8 = Article.where(username: username, genre: 'tour')
+    genre9 = Article.where(username: username, genre: 'gourmet')
+    get_article = [genre1, genre2, genre3, genre4, genre5, genre6, genre7, genre8, genre9]
 
-		max = count.max
+    count = Array.new(9, 0)
+    get_article.each.with_index do |genre, i|
+      genre.each do |item|
+        count[i] = count[i] + item.count
+      end
+    end
 
-		count.each_with_index do|count, index|
-			@point[index] = 1000 * count / max
-		end
-	end
+    if Article.find_by(username: username, url: url).nil?
+      Status.create(username: username, game: count[0], anime: count[1], economy: count[2], entame: count[3], sports: count[4], tech: count[5], life: count[6], tour: count[7], gourmet: count[8])
+    else
+      status = Status.find_by(username: username)
+      status.update(game: count[0], anime: count[1], economy: count[2], entame: count[3], sports: count[4], tech: count[5], life: count[6], tour: count[7], gourmet: count[8])
+    end
 
-	def after_sign_in_path_for(resource)
-		sage_top_path
-	end
+    max = count.max
 
-	private
-	def sign_in_required
-		redirect_to new_user_session_url unless user_signed_in?
-	end
+    count.each_with_index do |count, index|
+      if (max != 0)
+        @point[index] = 1000 * count / max
+      else
+        @point[index] = 0
+      end
+    end
+  end
+
+  def after_sign_in_path_for(resource)
+    sage_top_path
+  end
+
+  private
+  def sign_in_required
+    redirect_to new_user_session_url unless user_signed_in?
+  end
 end

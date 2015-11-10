@@ -2,16 +2,19 @@ class GraphRaderController < ApplicationController
   def status_view_rader
     genre = ['ゲーム', 'アニメ', '政治・経済', 'エンタメ', 'スポーツ', 'IT・科学', 'ライフ', '旅行', 'グルメ']
 
-    aData = Array.new(params[:count].length, 0)
-    defaultData = Array.new(params[:count].length, 0)
-    params[:count].each_with_index do|count, index|
-      defaultData[index] = count.to_i
-    end
+    status = Status.find_by(username: $username)
+    statuses = [status.game,status.anime,status.economy,status.entame,status.sports,status.tech,status.life,status.tour,status.gourmet]
 
-    max = defaultData.max
+    aData = Array.new(statuses.length, 0)
 
-    defaultData.each_with_index do|count, index|
-      aData[index] = 1000 * count / max
+    max = statuses.max
+
+    statuses.each_with_index do |count, index|
+      if (max != 0)
+        aData[index] = 1000 * count / max
+      else
+        aData[index] = 0
+      end
     end
 
     @graph = LazyHighCharts::HighChart.new('graph') do |f|

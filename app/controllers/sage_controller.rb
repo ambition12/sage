@@ -4,7 +4,7 @@ class SageController < ApplicationController
   $default_url = "http://www.google.com"
   $default_title = "nil"
   $url = Array.new(6, "http://www.google.com")
-  $title = Array.new(6,"nil")
+  $title = Array.new(6, "nil")
   #$keyword(トレンド記事を検索するキーワード)
   APIKEY = 'Av6GLD1hPwWcFziuhtlLqp6yCBXiZYGKJ8SXHox80dY'
 
@@ -20,16 +20,16 @@ class SageController < ApplicationController
     if (results[0][:News][0] != nil)
       for num in 0...6 do
         articleUrl = results[0][:News][num][:Url]
-	articleTitle = results[0][:News][num][:Title]
+        articleTitle = results[0][:News][num][:Title]
         if articleUrl != nil then
           $url[num] = articleUrl
-	  $title[num] = articleTitle
+          $title[num] = articleTitle
         end
       end
     else
       for num in 0...6 do
         $url[num] = $default_url
-	$title[num] = $default_title
+        $title[num] = $default_title
       end
     end
     redirect_to :action => "yourself"
