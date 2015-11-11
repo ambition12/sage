@@ -1,22 +1,25 @@
 class ApplicationController < ActionController::Base
-  $username = 'testuser1'
-
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :trends_update, :status_update
+  before_action :status_update ,if: :authenticate_user!
+  before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_user!
+  protect_from_forgery with: :exception
 
-  private
-
-  def trends_update
-    if MyTrend.find_by(username: $username).nil?
-      MyTrend.create(username: $username)
-    end
+  protected
+  def configure_permitted_parameters
+    #strong parametersを設定し、usernameを許可
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :password, :password_confirmation) }
+    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:username, :password, :remember_me) }
   end
 
+
+  private
   def status_update
-    username = $username
+    username = current_user.username
+    genre = ["game","anime","economy","entame","sports","tech","life","tour","gourmet"]
 
     genre1 = Article.where(username: username, genre: 'game')
     genre2 = Article.where(username: username, genre: 'anime')
@@ -36,14 +39,16 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    max = count.max
+    major = genre[count.index(max)]
+
     if Status.find_by(username: username).nil?
-      Status.create(username: username, game: count[0], anime: count[1], economy: count[2], entame: count[3], sports: count[4], tech: count[5], life: count[6], tour: count[7], gourmet: count[8])
+      Status.create(username: username, game: count[0], anime: count[1], economy: count[2], entame: count[3], sports: count[4], tech: count[5], life: count[6], tour: count[7], gourmet: count[8], major: major)
     else
       status = Status.find_by(username: username)
-      status.update(game: count[0], anime: count[1], economy: count[2], entame: count[3], sports: count[4], tech: count[5], life: count[6], tour: count[7], gourmet: count[8])
+      status.update(game: count[0], anime: count[1], economy: count[2], entame: count[3], sports: count[4], tech: count[5], life: count[6], tour: count[7], gourmet: count[8], major: major)
     end
 
-    max = count.max
 
     @point = Array.new(count.length, 0)
     count.each_with_index do |count, index|
