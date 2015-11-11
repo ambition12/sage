@@ -72,16 +72,6 @@
 						<a class="btn btn-default" href="/life/life_view" role="button">ライフ</a>
 						<a class="btn btn-default" href="/tour/tour_view" role="button">旅行</a>
 						<a class="btn btn-default" href="/gourmet/gourmet_view" role="button">グルメ</a>
-						<% if user_signed_in? %>
-							<!--
-							<strong<%= link_to current_user.username, pages_show_path %></strong>
-							-->
-							<%= link_to 'プロフィール変更', edit_user_registration_path,class: "btn btn-default" %>
-							<%= link_to 'ログアウト', destroy_user_session_path, class: "btn btn-default", method: :delete %>
-						<% else %>
-							<%= link_to 'サインアップ', new_user_registration_path, class: "btn btn-default"  %>
-							<%= link_to 'ログイン', new_user_session_path, class: "btn btn-default" %>
-						<% end %>
 					</div>
 				</div>
 				<!--/.nav-collapse -->
@@ -93,7 +83,7 @@
 				<div class="span3">
 					<div class="well sidebar-nav">
 						<ul class="nav nav-list">
-							<li class="nav-header">ユーザネーム</li>
+							<li class="nav-header">ユーザネーム: <%= current_user.username%></li>
 							<li>
 							<p>ゲーム :<%= @point[0]  %></p>
 							</li>
@@ -122,10 +112,27 @@
 							<p>グルメ :<%= @point[8]  %></p>
 							</li>
 							<li>
-							<%= link_to "rader", "/graph_rader/status_view_rader"  %>
+							<%= link_to "レーダーチャート", "/graph_rader/status_view_rader"  %>
 							</li>
 							<li>
-							<%= link_to "Date_status", "/graph/status_view"  %>
+							<%= link_to "ヒストグラム", "/graph/status_view"  %>
+							</li>
+
+							<li>
+							<%= link_to 'フレンド', friend_show_path %>
+							</li>
+
+							<li>
+							<% if user_signed_in? %>
+								<!--
+								<strong<%= link_to current_user.username, pages_show_path %></strong>
+								-->
+								<%= link_to 'プロフィール変更', edit_user_registration_path%>
+								<%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+							<% else %>
+								<%= link_to 'サインアップ', new_user_registration_path %>
+								<%= link_to 'ログイン', new_user_session_path%>
+							<% end %>
 							</li>
 						</ul>
 					</div>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>	
+		<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" rel="stylesheet">
+	</head>
+	<body style="min-width:500px;margin: 60px 50% 60px 60px;">
+			<% if user_signed_in? %>
+				<!--
+				<strong<%= link_to current_user.username, pages_show_path %></strong>
+				-->
+				<%= link_to 'プロフィール変更', edit_user_registration_path, class: "btn btn-default" %>
+				<%= link_to 'ログアウト', destroy_user_session_path, class: "btn btn-default", method: :delete %>
+			<% else %>
+				<%= link_to 'サインアップ', new_user_registration_path, class: "btn btn-default" %>
+				<%= link_to 'ログイン', new_user_session_path, class: "btn btn-default" %>
+			<% end %>
+			<%= bootstrap_flash %>
+			<%= yield %>
+		<footer>
+		<p>&copy; Company 2015</p>
+		</footer>
+
+	</body>
+
+</html>
