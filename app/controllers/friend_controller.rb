@@ -16,7 +16,7 @@ class FriendController < ApplicationController
       @your_trend = Array.new(5, "google")
     else
       your_status_tmp = Status.find_by(username: your_name)
-      your_status = Array.new(9,0)
+      your_status = Array.new(9, 0)
       your_status[0] = your_status_tmp.game
       your_status[1] = your_status_tmp.anime
       your_status[2] = your_status_tmp.economy
@@ -27,13 +27,17 @@ class FriendController < ApplicationController
       your_status[7] = your_status_tmp.tour
       your_status[8] = your_status_tmp.gourmet
 
-      your_trend_tmp = MyTrend.find_by(username: your_name)
-      @your_trend = Array.new(5,"google")
-      @your_trend[0] = your_trend_tmp.one
-      @your_trend[1] = your_trend_tmp.two
-      @your_trend[2] = your_trend_tmp.three
-      @your_trend[3] = your_trend_tmp.four
-      @your_trend[4] = your_trend_tmp.five
+      @your_trend = Array.new(5, "google")
+      if MyTrend.find_by(username: your_name).nil?
+      else
+        your_trend_tmp = MyTrend.find_by(username: your_name)
+        @your_trend[0] = your_trend_tmp.one
+        @your_trend[1] = your_trend_tmp.two
+        @your_trend[2] = your_trend_tmp.three
+        @your_trend[3] = your_trend_tmp.four
+        @your_trend[4] = your_trend_tmp.five
+      end
+
     end
 
     aData = Array.new(your_status.length, 0)
