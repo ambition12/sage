@@ -3,7 +3,7 @@ class FriendController < ApplicationController
     if Friend.find_by(username: current_user.username).nil?
       @my_friends = nil
     else
-      @my_friends = Friend.where(username: username)
+      @my_friends = Friend.where(username: current_user.username)
     end
   end
 
@@ -11,6 +11,9 @@ class FriendController < ApplicationController
     your_name = params[:your_name]
 
     if Status.find_by(username: your_name).nil?
+      @your_status = Array.new(9, 0)
+      @your_trend = Array.new(5, "google")
+    else
       your_status_tmp = Status.find_by(username: your_name)
       @your_status = Array.new(9,0)
       @your_status[0] = your_status_tmp.game
@@ -30,10 +33,8 @@ class FriendController < ApplicationController
       @your_trend[2] = your_trend_tmp.three
       @your_trend[3] = your_trend_tmp.four
       @your_trend[4] = your_trend_tmp.five
-    else
-      @your_status = Array.new(9, 0)
-      @your_trend = Array.new(5, "google")
     end
+    # redirect_to action: :show, url: url
   end
 
   def follow
@@ -55,6 +56,7 @@ class FriendController < ApplicationController
       friend = Friend.find_by(username: current_user.username, friendname: your_name)
       friend.destroy
     end
+    redirect_to action: :show
   end
 
   def search_as_name
