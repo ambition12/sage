@@ -42,11 +42,13 @@ class SageController < ApplicationController
   def keyword_update
     mytrends = MyTrend.find_by(username: current_user.username)
     keyword_tmp = Array.new(5, "null")
-    keyword_tmp[0] = mytrends.one
-    keyword_tmp[1] = mytrends.two
-    keyword_tmp[2] = mytrends.three
-    keyword_tmp[3] = mytrends.four
-    keyword_tmp[4] = mytrends.five
+    if !mytrends.nil?
+      keyword_tmp[0] = mytrends.one
+      keyword_tmp[1] = mytrends.two
+      keyword_tmp[2] = mytrends.three
+      keyword_tmp[3] = mytrends.four
+      keyword_tmp[4] = mytrends.five
+    end
 
     $keyword = keyword_tmp
     redirect_to action: "yourself_update", id: 1
