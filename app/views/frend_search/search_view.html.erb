@@ -32,6 +32,10 @@
       </tr>
     </thead>
     <tbody>
+    <tr>
+      <td><%= link_to "anonymous", "your_status/anonymous" %></td>
+      <td><%= link_to "follow", "follow/anonymous"%></td>
+    </tr>
       <% unless @my_friends.nil? %>
       <% @my_friends.each do |friends| %>
       <tr>
