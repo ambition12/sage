@@ -1,5 +1,9 @@
 Sage::Application.routes.draw do
+  get "frend_search/search_view"
+  get "friend/remove/:your_name" => 'friend#remove'
+  get "friend/your_status/:your_name" => 'friend#your_status'
   get "friend/show"
+
   devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks" }
 	root 'sage#top'
 

@@ -1,0 +1,2 @@
+module FrendSearchHelper
+end
