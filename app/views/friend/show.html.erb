@@ -13,13 +13,10 @@
 		<% unless @my_friends.nil? %>
 			<% @my_friends.each do |friends| %>
 				<tr>
-					<td></td>
-					<td><%= link_to "#", friends.frientname  %></td>
+					<td><%= link_to friends.friendname, "your_status/" + friends.friendname  %></td>
+					<td><%= link_to "remove", "remove/" + friends.friendname  %></td>
 					<td>
 						<!-- This currently works but smells -->
-						<%= link_to(friends, class: "btn btn-small btn-danger", confirm: t_deletion_confirm(friends, friends.friendname), method: :delete, :title => t('EHM-G.destroy')) do %>
-							Destroy <i class="icon-trash icon-white"></i>
-						<% end %>
 
 						<%#= icon_delete_link_to(person, people_path, person.full_name) %>
 					</td>
