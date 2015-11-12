@@ -1,5 +1,6 @@
 Sage::Application.routes.draw do
-  get "friend/remove/:your_name" => 'friend#remove'
+	get "frend_search/search_view"
+	get "friend/remove/:your_name" => 'friend#remove'
   get "friend/your_status/:your_name" => 'friend#your_status'
   get "friend/show"
 
