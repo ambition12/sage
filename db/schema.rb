@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20151110104811) do
     t.integer  "tour"
     t.integer  "gourmet"
     t.string   "major"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

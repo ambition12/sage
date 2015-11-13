@@ -1,11 +1,4 @@
 Sage::Application.routes.draw do
-  get "frend_search/follow/:your_name" => 'frend_search#follow'
-	get "frend_search/search_view"
-
-	get "friend/remove/:your_name" => 'friend#remove'
-  get "friend/your_status/:your_name" => 'friend#your_status'
-  get "friend/show"
-
   devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks" }
 	root 'sage#top'
 
@@ -48,4 +41,12 @@ Sage::Application.routes.draw do
 
 	# sign up with twitter omniauth
 	get 'users/sign_out' => 'sage#top'
+
+	get "frend_search/your_status/:your_name" => 'frend_search#your_status'
+	get "frend_search/follow/:your_name" => 'frend_search#follow'
+	get "frend_search/search_view"
+
+	get "friend/remove/:your_name" => 'friend#remove'
+	get "friend/your_status/:your_name" => 'friend#your_status'
+	get "friend/show"
 end
