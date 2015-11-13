@@ -43,9 +43,8 @@ class MecabController < ApplicationController
       mytrends = MyTrend.find_by(username: username)
     end
 
-
-    if Trend.where.not(noun: %w(padding px margin)).order(:count).reverse_order.limit(5).where(username: username).exists?
-      trends_desc = Trend.where.not(noun: %w(padding px margin)).order(:count).reverse_order.limit(5).where(username: username)
+    if Trend.where.not(noun: %w(padding px margin 発売 ocial top span 登場 ニュース width 記事 レビュー 評価 border タイトル 一覧 position left right height none div color 公開 許可 開催 ♪「 こと header ­© µ· ´¾ ©º ¹´ ­© ¸­)).order(:count).reverse_order.limit(5).where(username: username).exists?
+      trends_desc = Trend.where.not(noun: %w(padding px margin 発売 ocial top span 登場 ニュース width 記事 レビュー 評価 border タイトル 一覧 position left right height none 公開 div color 許可 開催 こと ♪「 header © µ· ´¾ ©º ¹´ ­© ¸­)).order(:count).reverse_order.limit(5).where(username: username)
       mytrends.update(one: trends_desc[0].noun, two: trends_desc[1].noun, three: trends_desc[2].noun, four: trends_desc[3].noun, five: trends_desc[4].noun)
     end
     redirect_to url
