@@ -8,12 +8,12 @@ class FriendController < ApplicationController
   end
 
   def your_status
-    your_name = params[:your_name]
+    @your_name = params[:your_name]
 
-    if Status.find_by(username: your_name).nil?
+    if Status.find_by(username: @your_name).nil?
       your_status = Array.new(9, 0)
     else
-      your_status_tmp = Status.find_by(username: your_name)
+      your_status_tmp = Status.find_by(username: @your_name)
       your_status = Array.new(9, 0)
       your_status[0] = your_status_tmp.game
       your_status[1] = your_status_tmp.anime
@@ -25,10 +25,10 @@ class FriendController < ApplicationController
       your_status[7] = your_status_tmp.tour
       your_status[8] = your_status_tmp.gourmet
 
-      if MyTrend.find_by(username: your_name).nil?
+      if MyTrend.find_by(username: @your_name).nil?
         @your_trend = Array.new(5, "google")
       else
-        your_trend_tmp = MyTrend.find_by(username: your_name)
+        your_trend_tmp = MyTrend.find_by(username: @your_name)
         @your_trend = Array.new(5, "google")
         @your_trend[0] = your_trend_tmp.one
         @your_trend[1] = your_trend_tmp.two

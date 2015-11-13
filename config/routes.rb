@@ -42,7 +42,7 @@ Sage::Application.routes.draw do
 	# sign up with twitter omniauth
 	get 'users/sign_out' => 'sage#top'
 
-	get "frend_search/your_status/:your_name" => 'frend_search#your_status'
+	get "frend_search/your_status/:your_name" => 'friend#your_status'
 	get "frend_search/follow/:your_name" => 'frend_search#follow'
 	get "frend_search/search_view"
 
