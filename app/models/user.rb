@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 				 :recoverable, :rememberable, :trackable, :validatable,
 				 :authentication_keys => [:username]
 
+	has_one :status, dependent: :destroy, foreign_key: "username"
 
 	#usernameを必須とする
 	validates_uniqueness_of :username
