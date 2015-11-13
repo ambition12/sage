@@ -36,9 +36,24 @@ class FriendController < ApplicationController
         @your_trend[3] = your_trend_tmp.four
         @your_trend[4] = your_trend_tmp.five
       end
-
     end
+    @graph = status_view_rader(your_status)
+  end
 
+  def remove
+    your_name = params[:your_name]
+
+    if Friend.find_by(username: current_user.username, friendname: your_name).nil?
+      #すでにお友達でない
+    else
+      friend = Friend.find_by(username: current_user.username, friendname: your_name)
+      friend.destroy
+    end
+    redirect_to action: :show
+  end
+
+  private
+  def status_view_rader your_status
     genre = ['ゲーム', 'アニメ', '政治・経済', 'エンタメ', 'スポーツ', 'IT・科学', 'ライフ', '旅行', 'グルメ']
     aData = Array.new(your_status.length, 0)
 
@@ -52,7 +67,7 @@ class FriendController < ApplicationController
       end
     end
 
-    @graph = LazyHighCharts::HighChart.new('graph') do |f|
+    graph = LazyHighCharts::HighChart.new('graph') do |f|
       f.chart(polar: true, type: 'line') # グラフの種類
       f.pane(size: '100%') # グラフサイズの比
       f.title(text: 'Status') # タイトル
@@ -66,17 +81,6 @@ class FriendController < ApplicationController
                y: 70,
                layout: 'vertical')
     end
-  end
-
-  def remove
-    your_name = params[:your_name]
-
-    if Friend.find_by(username: current_user.username, friendname: your_name).nil?
-      #すでにお友達でない
-    else
-      friend = Friend.find_by(username: current_user.username, friendname: your_name)
-      friend.destroy
-    end
-    redirect_to action: :show
+    return graph
   end
 end
