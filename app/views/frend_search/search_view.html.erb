@@ -3,24 +3,24 @@
 </div>
 
 <body>
-  <form action="#" class="search" method="get">
+  <form action="/frend_search/search_view" class="search" method="get">
 
     <span>
 
-      <input name="ゲーム" type="checkbox" value="サンプル">ゲーム&nbsp;&nbsp;
-      <input name="アニメ" type="checkbox" value="サンプル">アニメ&nbsp;&nbsp;
-      <input name="政治・経済" type="checkbox" value="サンプル">政治・経済&nbsp;&nbsp;
-      <input name="エンタメ" type="checkbox" value="サンプル">エンタメ&nbsp;&nbsp;
-      <input name="スポーツ" type="checkbox" value="サンプル">スポーツ&nbsp;&nbsp;
-      <input name="IT・科学" type="checkbox" value="サンプル">IT・科学&nbsp;&nbsp;
-      <input name="ライフ" type="checkbox" value="サンプル">ライフ&nbsp;&nbsp;
-      <input name="旅行" type="checkbox" value="サンプル">旅行&nbsp;&nbsp;
-      <input name="グルメ" type="checkbox" value="サンプル">グルメ&nbsp;&nbsp;
+      <input name="genre[]" type="checkbox" value="game">ゲーム&nbsp;&nbsp;
+      <input name="genre[]" type="checkbox" value="anime">アニメ&nbsp;&nbsp;
+      <input name="genre[]" type="checkbox" value="economy">政治・経済&nbsp;&nbsp;
+      <input name="genre[]" type="checkbox" value="entame">エンタメ&nbsp;&nbsp;
+      <input name="genre[]" type="checkbox" value="sports">スポーツ&nbsp;&nbsp;
+      <input name="genre[]" type="checkbox" value="tech">IT・科学&nbsp;&nbsp;
+      <input name="genre[]" type="checkbox" value="life">ライフ&nbsp;&nbsp;
+      <input name="genre[]" type="checkbox" value="tour">旅行&nbsp;&nbsp;
+      <input name="genre[]" type="checkbox" value="gourmet">グルメ&nbsp;&nbsp;
     </span>
 
     <div>
-      <input class="textBox" name="example" type="text">
-      <input class="btn" type="submit" value="検索">
+      <input class="textBox" name="typed_name" type="text">
+      <input class="btn" type="submit" name="search_button" value="検索">
     </div>
 
   </form>
@@ -32,11 +32,11 @@
       </tr>
     </thead>
     <tbody>
-      <% unless @my_friends.nil? %>
-      <% @my_friends.each do |friends| %>
+      <% unless @result.nil? %>
+      <% @result.each do |users| %>
       <tr>
-        <td><%= link_to friends.friendname, "your_status/" + friends.friendname  %></td>
-        <td><%= link_to "add", "add/" + friends.friendname  %></td>
+        <td><%= link_to users.username, "your_status/" + users.username  %></td>
+        <td><%= link_to "follow", "follow/" + users.username  %></td>
         <td>
           <!-- This currently works but smells -->
 
