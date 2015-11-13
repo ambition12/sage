@@ -9,7 +9,6 @@ class FriendController < ApplicationController
 
   def your_status
     your_name = params[:your_name]
-    genre = ['ゲーム', 'アニメ', '政治・経済', 'エンタメ', 'スポーツ', 'IT・科学', 'ライフ', '旅行', 'グルメ']
 
     if Status.find_by(username: your_name).nil?
       your_status = Array.new(9, 0)
@@ -40,6 +39,7 @@ class FriendController < ApplicationController
 
     end
 
+    genre = ['ゲーム', 'アニメ', '政治・経済', 'エンタメ', 'スポーツ', 'IT・科学', 'ライフ', '旅行', 'グルメ']
     aData = Array.new(your_status.length, 0)
 
     max = your_status.max
@@ -59,7 +59,7 @@ class FriendController < ApplicationController
       f.xAxis(categories: genre, tickmarkPlacement: 'on')
       # categories:各項目の名前,tickmarkPlacement:'on'だとメモリ表示がカテゴリーの表示に沿う
       f.yAxis(gridLineInterpolation: 'polygon', lineWidth: 0, min: 0, max: 1000) # 各項目の最大値やら
-      f.series(name: 'ジャンル', data: @aData, pointPlacement: 'on')
+      f.series(name: 'ジャンル', data: aData, pointPlacement: 'on')
       # 各データ
       f.legend(align: 'right',
                verticalAlign: 'top',
