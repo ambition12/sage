@@ -1,7 +1,47 @@
 <h1><%= @your_name %>'s  Status</h1>
 <body>
-	<div><%= @your_trend  %></div>
-	<div>
-		<%= high_chart("graph", @graph) %>
+	<!--	<div><%= @your_trend  %></div> -->
+
+	<div class="row">
+		<div class="col-xs-6 col-md-4">
+
+			<div  class="container" style="width:70%;margin-top:10%;">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Ranking</th>
+							<th>Genres</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td><%= @your_trend[0] %></td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td><%= @your_trend[1] %></td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td><%= @your_trend[2] %></td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td><%= @your_trend[3] %></td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td><%= @your_trend[4] %></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-8">
+			<div style="width:70%;">
+				<%= high_chart("graph", @graph) %>
+			</div>
+		</div>
 	</div>
 </body>
