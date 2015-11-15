@@ -22,3 +22,7 @@ p {
   -o-text-overflow: ellipsis;
   /* Opera */
 }
+
+.well sidebar-nav {
+  background-color: pink
+}
